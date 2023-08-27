@@ -1,15 +1,33 @@
-local SongPath = "/server/assets/jukebox/"
-
+filenames = {}
 --Must be named exactly as listed in quotes below next to the title: key
     local color = {
       r = 0,
       g = 0,
       b = 0
     }
-  
+    local String SongPath = "/server/assets/jukebox/"
+    function ScanDir(SongPath)
+      i, t, popen = 0, {}, io.popen
+      local pfile = popen('ls -a "'..SongPath..'"')
+      if pfile ~= nil then
+      for filename in pfile:lines() do
+          local i = i + 1
+          t[i] = filename
+          filenames.add = {index = i, filename = t}
+          print(filenames.tostring)
+      end
+      pfile:close()
+      return {i, t}
+      else return
+      end
+    end
+    ScanDir(SongPath)
+
+    print(filenames)
+
     local Songs = {
-      { id = "1",title = "Track 1", author = "", read = true, SongNumber = 0 },
-      { id = "2",title = "Track 2", author = "", read = true,SongNumber = 1 },
+      { id = filenames[0].index,title = filenames[0].filename, author = "", read = true, SongNumber = 0 },
+      { id = filenames[1].index,title = filenames[1].filename, author = "", read = true,SongNumber = 1 },
       { id = "3",title = "Track 3", author = "",   read = true,SongNumber = 2 },
       { id = "4",title = "Track 4", author = "",  read = true,SongNumber = 3},
       { id = "5",title = "Track 5", author = "", read = true,SongNumber = 4 },
