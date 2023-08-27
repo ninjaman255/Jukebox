@@ -1,17 +1,23 @@
 local requests = {}
 local questioned_requests = {}
 
-function handle_player_connect(player_id)
+Net:on("player_connect", function(event)
+  local player_id = event.player_id
   requests[player_id] = {}
-end
+end)
 
-function handle_player_disconnect(player_id)
+Net:on("player_disconnect", function(event)
+  local player_id = event.player_id
   requests[player_id] = nil
   questioned_requests[player_id] = nil
-end
+end)
 
-function handle_actor_interaction(player_id, other_id, button)
+Net:on("actor_interaction", function(event)
+  local button = event.button
   if button ~= 0 then return end
+
+  local player_id = event.player_id
+  local other_id = event.actor_id
 
   if requests[other_id] == nil then
     -- other_id is not a player id, since they're not registered in the request list
@@ -22,7 +28,7 @@ function handle_actor_interaction(player_id, other_id, button)
 
   if requests[player_id][other_id] then
     -- we're responding to the other player's request
-    question = "Accept request?"
+    question = "Accept battle with\n"..Net.get_player_name(other_id).."?"
   else
     -- we're making a request for the other player
 
@@ -36,9 +42,9 @@ function handle_actor_interaction(player_id, other_id, button)
     local request_status = requests[other_id][player_id]
 
     if request_status then
-      question = "Request again?"
+      question = "Request again from\n"..Net.get_player_name(other_id).."?"
     else
-      question = "Request a battle?"
+      question = "Request PVP with\n"..Net.get_player_name(other_id).."?"
     end
   end
 
@@ -52,9 +58,11 @@ function handle_actor_interaction(player_id, other_id, button)
   )
 
   questioned_requests[player_id] = other_id
-end
+end)
 
-function handle_textbox_response(player_id, response)
+Net:on("textbox_response", function(event)
+  local response = event.response
+  local player_id = event.player_id
   if response == 0 then
     -- response was no, no action needs to be taken
     questioned_requests[player_id] = nil
@@ -79,4 +87,4 @@ function handle_textbox_response(player_id, response)
   end
 
   questioned_requests[player_id] = nil
-end
+end)
