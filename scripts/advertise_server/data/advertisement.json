@@ -4,7 +4,7 @@
     },
     "advertisements":[
         {
-            "unique_server_id":"Music & Chill",
+            "unique_server_id":"Music_and_Chill",
             "name":"Jukebox-jammin",
             "description":"Super basic server for hanging out, has a Jukebox to change the OW theme (will take a second to download song if its not been played before while you are there)",
             "tags":["pvp", "Hanging-out"],
