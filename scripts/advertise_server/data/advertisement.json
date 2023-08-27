@@ -1,0 +1,18 @@
+{
+    "listservers":{
+        "main":"http://www.keristero.xyz/server_list/"
+    },
+    "advertisements":[
+        {
+            "unique_server_id":"Music & Chill",
+            "name":"Jukebox-jammin",
+            "description":"Super basic server for hanging out, has a Jukebox to change the OW theme (will take a second to download song if its not been played before while you are there)",
+            "tags":["pvp", "Hanging-out"],
+            "address":"159.223.165.219:9500",
+            "data":"",
+            "icon":"advertisement.png",
+            "color":"rgb(255,255,255)",
+            "advertise_map":true
+        }
+    ]
+}
