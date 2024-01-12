@@ -38,7 +38,11 @@
   <object id="50" gid="20" x="64" y="64" width="44" height="61"/>
   <object id="52" gid="45" x="39.5" y="240.5" width="64" height="72">
    <properties>
+    <property name="Color" type="bool" value="true"/>
     <property name="Jukebox" type="bool" value="true"/>
+    <property name="b" type="int" value="220"/>
+    <property name="g" type="int" value="110"/>
+    <property name="r" type="int" value="125"/>
    </properties>
   </object>
   <object id="53" gid="20" x="256" y="64" width="44" height="61"/>
