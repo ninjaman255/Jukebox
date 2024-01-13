@@ -13,7 +13,7 @@ function listFiles(directory)
   -- make a table to collect the file names
   local songTable = {}    
   -- handles running the cmd
-  local cmd = 'dir "' .. directory .. '" /b'
+  local cmd = 'ls "' .. directory .. '"'
   local handle = io.popen(cmd)
 
   if handle then
