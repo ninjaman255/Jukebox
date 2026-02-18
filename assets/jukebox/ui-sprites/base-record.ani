@@ -1,0 +1,5 @@
+!frame_rate 60
+!image_path "C:/Users/aaron/Documents/Code/Jukebox/assets/jukebox/ui-sprites/base-record.png"
+
+anim DEFAULT
+frame dur=5f x=0 y=0 w=128 h=128 originx=64 originy=64
