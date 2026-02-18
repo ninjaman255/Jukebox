@@ -3,18 +3,9 @@
                  Jukebox v2.1 by D3str0y3d
 	 https://github.com/ninjaman255/Server_12_22_2021_Jukebox
 * ---------------------------------------------------------- *
-]] --
+]]                                             --
 
-print("[jukebox] Loading the groove!")
-
--- defaults
-local Songs = {}
-local color =
-{
-  r = 0,
-  g = 0,
-  b = 0
-}
+local utils = require("scripts/jukebox/utils") -- load the utility module
 
 --Shorthand for async
 function async(p)
@@ -25,59 +16,41 @@ end
 --Shorthand for await
 function await(v) return Async.await(v) end
 
---purpose: splits a string based on a delimiter
-local function splitter(inputstr, sep)
-  if sep == nil then
-    sep = '%s'
-  else
-    sep = sep:gsub("[%(%)%.%%%+%-%*%?%[%]%^%$]", "%%%1")
-  end
+-- ===================================================================--
+print("[Jukebox] Loading the groove!")
+-- ===================================================================--
 
-  local t = {}
-  for str in (inputstr .. sep):gmatch("(.-)" .. sep) do
-    table.insert(t, str)
-  end
-  return t
+local BaseRecordPath = "assets/jukebox/records/"
+local BaseTracksPath = "assets/jukebox/tracks/"
+
+local RecordLabels = {
+  AlouetteEXE = {
+    texture_path = BaseRecordPath .. "alouetteEXE-record.png"
+  }
+}
+
+-- defaults
+local Songs = {}
+
+local color =
+{
+  r = 0,
+  g = 0,
+  b = 0
+}
+
+-- grabbing initial song names from dir "server/assets/jukebox/tracks/"
+local songList = utils.listFiles("./assets/jukebox/tracks/alouetteEXE-record/")
+
+local function createTrackRecord(index, title, record_label, author, duration)
+  return {
+    index = index,
+    title = title,
+    record_label = record_label,
+    author = author,
+    duration = duration
+  }
 end
-
---purpose: checks if server is running on windows or unix and adjusts populating the song list accordingly
-local function get_os()
-  if package.config:sub(1, 1) == "\\" then
-    return "windows"
-  else
-    return "unix"
-  end
-end
-
-local function listFiles(directory)
-  local os_type = get_os()
-  print("[jukebox] Populating song list from " .. os_type .. " system.")
-  -- make a table to collect the file names
-  local songTable = {}
-  print(os_type)
-  local cmd = ""
-  -- handles running the cmd
-  if os_type == "windows" then
-    cmd = 'dir "' .. directory .. '" /b'
-  else
-    cmd = 'ls "' .. directory .. '"'
-  end
-
-  local handle = io.popen(cmd)
-
-  if handle then
-    for file in handle:lines() do
-      table.insert(songTable, file)
-    end
-    handle:close()
-  else
-    print("Error listing files in directory.")
-  end
-  return songTable
-end
-
--- grabbing initial song names from dir "server/assets/jukebox"
-local songList = listFiles("./assets/jukebox")
 
 local function CreatePost(i, name, author)
   return {
@@ -106,11 +79,12 @@ Net:on("post_selection", function(event)
     if numberfiedPostID == #Songs then
       Net.close_bbs(event.player_id)
     elseif numberfiedPostID <= #Songs then
-      response = await(Async.question_player(event.player_id,
+      local response = await(Async.question_player(event.player_id,
         ("Do you wish to change the song to " .. Songs[tonumber(event.post_id)].title .. "?")))
       if (response == 1) then
         local area_id = Net.get_player_area(event.player_id)
-        Net.set_song(area_id, "/server/assets/jukebox/" .. Songs[tonumber(event.post_id)].title .. ".ogg")
+        Net.set_song(area_id,
+          "/server/assets/jukebox/tracks/alouetteEXE-record/" .. Songs[tonumber(event.post_id)].title .. ".ogg")
         Net.close_bbs(event.player_id)
       end
     end
@@ -137,7 +111,7 @@ Net:on("object_interaction", function(event)
 
   if object.custom_properties.Color ~= nil then
     --print("[jukebox] Loaded custom color for jukebox")
-    color_parts = splitter(object.custom_properties.Color, ",")
+    local color_parts = utils.splitter(object.custom_properties.Color, ",")
     if color_parts[3] ~= nil then
       color.r = color_parts[1]
       color.g = color_parts[2]

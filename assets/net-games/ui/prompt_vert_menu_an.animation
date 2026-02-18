@@ -1,0 +1,20 @@
+imagePath="/server/assets/net-games/ui/prompt_vert_menu_an.png"
+
+animation state="OPEN"
+frame duration="0.04" x="183" y="157" w="55" h="33" originx="55" originy="33" flipx="0" flipy="0"
+frame duration="0.04" x="581" y="42" w="133" h="53" originx="133" originy="53" flipx="0" flipy="0"
+frame duration="0.04" x="286" y="14" w="190" h="81" originx="190" originy="81" flipx="0" flipy="0"
+frame duration="0.04" x="0" y="0" w="238" h="95" originx="238" originy="95" flipx="0" flipy="0"
+frame duration="0.40" x="0" y="0" w="238" h="95" originx="238" originy="95" flipx="0" flipy="0"
+
+animation state="CLOSE"
+frame duration="0.04" x="0" y="0" w="238" h="95" originx="238" originy="95" flipx="0" flipy="0"
+frame duration="0.04" x="286" y="14" w="190" h="81" originx="190" originy="81" flipx="0" flipy="0"
+frame duration="0.04" x="581" y="42" w="133" h="53" originx="133" originy="53" flipx="0" flipy="0"
+frame duration="0.04" x="183" y="157" w="55" h="33" originx="55" originy="33" flipx="0" flipy="0"
+frame duration="0.04" x="465" y="169" w="9" h="21" originx="11" originy="20.5" flipx="0" flipy="0"
+frame duration="0.44" x="465" y="169" w="9" h="21" originx="11" originy="20.5" flipx="0" flipy="0"
+
+
+animation state="OPEN_IDLE"
+frame duration="0.20" x="0" y="0" w="238" h="95" originx="238" originy="95" flipx="0" flipy="0"

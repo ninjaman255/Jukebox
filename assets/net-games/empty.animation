@@ -1,0 +1,35 @@
+animation state="IDLE_UR"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="IDLE_DR"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="IDLE_UL"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="IDLE_DL"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="WALK_UR"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="WALK_DR"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="WALK_UL"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="WALK_DL"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="RUN_UR"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="RUN_DR"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="RUN_UL"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
+
+animation state="RUN_DL"
+frame duration="0.1" x="0" y="0" w="1" h="1" originx="0" originy="0" flipx="0" flipy="0" 
