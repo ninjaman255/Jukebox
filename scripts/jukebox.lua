@@ -54,10 +54,13 @@ local function listFiles(directory)
   print("[jukebox] Populating song list from " .. os_type .. " system.")
   -- make a table to collect the file names
   local songTable = {}
+  print(os_type)
+  local cmd = ""
   -- handles running the cmd
-  local cmd = 'ls "' .. directory .. '"'
   if os_type == "windows" then
-    local cmd = 'dir "' .. directory .. '" /b'
+    cmd = 'dir "' .. directory .. '" /b'
+  else
+    cmd = 'ls "' .. directory .. '"'
   end
 
   local handle = io.popen(cmd)
